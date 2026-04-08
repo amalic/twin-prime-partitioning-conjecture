@@ -17,7 +17,7 @@ $$\forall n \in T, n > 2 \implies \exists n_a, n_b \in T : n = n_a + n_b$$
 
 where $n_a, n_b < n$.
 
-*Note on Terminology: While the set $T$ is not "additively closed" in the strict sense (e.g., $4+4=8$, and $8 \notin T$), the conjecture posits that every element of $T$ is partitionable into two other elements from the same set.*
+*Note on Terminology: While the set* $T$ *is not "additively closed" in the strict sense (e.g.,* $4+4=8$*, and* $8 \notin T$*), the conjecture posits that every element of* $T$ *is partitionable into two other elements from the same set.*
 
 ## 3. Relationship to Goldbach and Twin Prime Conjectures
 The **Malic Conjecture on Twin Prime Additive Partitioning** represents a **restricted refinement** of the Strong Goldbach Conjecture. While Goldbach asserts that every even integer $2k > 2$ is the sum of two primes, this framework restricts the summands specifically to the centers of twin prime pairs ($T$).
