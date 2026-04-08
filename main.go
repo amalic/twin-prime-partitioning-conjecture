@@ -26,7 +26,6 @@ func main() {
 	primeFile := flag.String("primes", "primes.txt", "Text file for persisted primes")
 	optimized := flag.Bool("optimized", false, "If true, finds only the pair closest to midpoint and saves to conjecture_optimized.json")
 	flag.Parse()
-	flag.Parse()
 
 	limit := *maxFlag
 	start := time.Now()
@@ -86,7 +85,7 @@ func main() {
 			for i := 0; i <= mid; i++ {
 				na := mid - i
 				// We only care about even centers (and the seed 2)
-				if na < 2 && na != 0 {
+				if na == 1 {
 					continue
 				}
 
