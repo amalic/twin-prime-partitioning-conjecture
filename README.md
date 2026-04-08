@@ -65,7 +65,7 @@ Optimized midpoint search up to 100 Million
 go run main.go -max=100_000_000 -optimized=true -db=conjecture_optimized.json
 ```
 
-# Verify to 1 Billion (Approx. 10 mins on M4 hardware)
+Verify to 1 Billion (Approx. 10 mins on M4 hardware)
 
 ```bash
 go run main.go -max=1_000_000_000 -optimized=true -db=my_local_verification.json -primes=my_local_primes.txt
