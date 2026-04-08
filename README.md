@@ -44,6 +44,12 @@ To reproduce the results or extend the verification, use the following command:
 go run main.go -max=1_000_000
 ```
 
+or an optimized version which searches around the midpoint and continues once a solution is found
+
+```bash
+go run main.go -max=100_000_000 -optimized=true -db=conjecture_optimized.json
+```
+
 The source code, methodology, and resulting datasets (including the JSON-formatted genealogy) are available for review in this repository.
 
 ---

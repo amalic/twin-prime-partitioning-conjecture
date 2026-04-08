@@ -24,6 +24,8 @@ func main() {
 	maxFlag := flag.Int("max", 1000, "The maximum number to check up to")
 	jsonFile := flag.String("db", "conjecture.json", "JSON file for additive genealogy")
 	primeFile := flag.String("primes", "primes.txt", "Text file for persisted primes")
+	optimized := flag.Bool("optimized", false, "If true, finds only the pair closest to midpoint and saves to conjecture_optimized.json")
+	flag.Parse()
 	flag.Parse()
 
 	limit := *maxFlag
@@ -69,21 +71,46 @@ func main() {
 	fmt.Printf("Processing centers from %d to %d...\n", lastCenter, limit)
 
 	// 5. Main Conjecture Loop
+	fmt.Printf("Processing centers from %d to %d...\n", lastCenter, limit)
 	for n := lastCenter + 2; n <= limit; n += 2 {
 		if primeMap[n-1] && primeMap[n+1] {
 			var currentCombinations [][2]int
 
-			for _, na := range pool {
-				if na > n/2 {
-					break
+			// MIDPOINT OPTIMIZATION
+			// We search for na starting from the midpoint (n/2) downwards to 0.
+			// This leverages the "Midpoint Density" observation.
+			mid := n / 2
+
+			// If mid is odd, the nearest even center is mid-1 or mid+1.
+			// Since na + nb = n, if na is mid-i, then nb is mid+i.
+			for i := 0; i <= mid; i++ {
+				na := mid - i
+				// We only care about even centers (and the seed 2)
+				if na < 2 && na != 0 {
+					continue
 				}
+
 				nb := n - na
-				if provenCenters[nb] {
-					currentCombinations = append(currentCombinations, [2]int{na, nb})
+
+				if provenCenters[na] && provenCenters[nb] {
+					// To keep results consistent with your previous version (na <= nb)
+					if na <= nb {
+						currentCombinations = append(currentCombinations, [2]int{na, nb})
+					}
+
+					// PERFORMANCE TWEAK:
+					if *optimized {
+						break
+					}
 				}
 			}
 
 			if len(currentCombinations) > 0 {
+				// To keep the JSON file ordered as before
+				sort.Slice(currentCombinations, func(i, j int) bool {
+					return currentCombinations[i][0] < currentCombinations[j][0]
+				})
+
 				newResult := Result{
 					Center:       n,
 					PrimePair:    [2]int{n - 1, n + 1},
@@ -92,7 +119,8 @@ func main() {
 				results = append(results, newResult)
 				pool = append(pool, n)
 				provenCenters[n] = true
-				fmt.Printf("[SUCCESS] Center %d: %d combinations found\n", n, len(currentCombinations))
+				fmt.Printf("[SUCCESS] Center %d: %d combinations found (nearest to mid: %v)\n",
+					n, len(currentCombinations), currentCombinations[len(currentCombinations)-1])
 			} else {
 				fmt.Printf("\n[CONJECTURE FAILED] Center %d has no combinations.\n", n)
 				saveResultsCompact(*jsonFile, results)
