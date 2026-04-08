@@ -67,8 +67,6 @@ func main() {
 		pf.Close()
 	}
 
-	fmt.Printf("Processing centers from %d to %d...\n", lastCenter, limit)
-
 	// 5. Main Conjecture Loop
 	fmt.Printf("Processing centers from %d to %d...\n", lastCenter, limit)
 	for n := lastCenter + 2; n <= limit; n += 2 {
@@ -209,7 +207,7 @@ func loadResults(filename string) []Result {
 	var results []Result
 	file, err := os.ReadFile(filename)
 	if err != nil {
-		return []Result{{Center: 2, PrimePair: [2]int{1, 3}, Combinations: [][2]int{{0, 0}}}}
+		return []Result{{Center: 2, PrimePair: [2]int{1, 3}, Combinations: [][2]int{}}}
 	}
 	json.Unmarshal(file, &results)
 	return results
