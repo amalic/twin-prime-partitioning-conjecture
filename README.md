@@ -8,7 +8,7 @@ Let $T$ be the set of **Twin Prime Centers**, defined as the set of even integer
 
 $$T = \{ n \in \mathbb{N} \mid (n-1) \in \mathbb{P} \text{ and } (n+1) \in \mathbb{P} \}$$
 
-*Note: For the purposes of this genealogy, $n=2$ is defined as the initial seed, corresponding to the pair $(1, 3)$.*
+*Note: For the purposes of this genealogy,* $n=2$ *is defined as the initial seed, corresponding to the pair* $(1, 3)$*.*
 
 ## 2. The Conjecture
 For every twin prime center $n \in T$ where $n > 2$, there exists at least one pair of twin prime centers $(n_a, n_b)$ such that $n$ is their sum:
