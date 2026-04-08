@@ -32,7 +32,7 @@ The convergence of this series implies that $T$ is a "thin" set compared to the 
 ## 5. Computational Verification
 Extensive computational analysis has been performed to verify this additive property. Using an incremental sieve and an additive genealogy tracking algorithm in Go, the conjecture has been verified for all $n \in T$ up to:
 
-* **Verification Limit:** $n = 1,000,000$
+* **Verification Limit:** $n = 1,000,000$ (optimized version $n = 100,000,000$)
 * **Observations:** 
     * The number of valid pairs $(n_a, n_b)$ for a given $n$ generally scales with the magnitude of $n$, suggesting that "isolated" centers become increasingly improbable as the numerical space expands.
     * **Midpoint Density:** Empirical data suggests that for most $n$, there exists at least one pair where $n_a \approx n_b \approx n/2$. This indicates that the additive richness of twin prime centers remains concentrated around the arithmetic mean, similar to the behavior observed in the standard Goldbach Conjecture.
