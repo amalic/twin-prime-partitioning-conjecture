@@ -48,8 +48,8 @@ The source code, methodology, and resulting datasets (including the JSON-formatt
 
 ---
 
-**License:** This work and the associated dataset are licensed under a Creative Commons Attribution 4.0 International License (CC BY 4.0).
+**License:** This work and the associated dataset are licensed under a [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.en).
 
-**Software License:** The source code in this repository is licensed under the MIT License.
+**Software License:** The source code in this repository is licensed under the [MIT License](LICENSE).
 
 **Author:** Alexander Malic
